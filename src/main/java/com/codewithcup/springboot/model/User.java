@@ -1,16 +1,15 @@
 package com.codewithcup.springboot.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
-@Table(name ="users")
-public class User {
+@Table(name = "users")
+public class User implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,19 +20,20 @@ public class User {
     private String lastName;
     private String email;
     private String phone;
-    private String  profile;
+    private String profile;
     private boolean enabled = true;
 
-//    User Many Roles
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    //    User Many Roles
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     @JsonIgnore
     private Set<UserRole> usersRoles = new HashSet<>();
 
-//    Default Constructor
+    //    Default Constructor
     public User() {
     }
-//    Parameterized Constructor
-    public User(Long id, String username, String password, String firstName, String lastName, String email, String phone, String profile , boolean enabled) {
+
+    //    Parameterized Constructor
+    public User(Long id, String username, String password, String firstName, String lastName, String email, String phone, String profile, boolean enabled) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -45,9 +45,33 @@ public class User {
         this.enabled = enabled;
     }
 
+    //    UserDetails Methods(Spring Security Inbuilt Interface)
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        Set<Authority> set = new HashSet<>();
+        // get user role from here
+        this.usersRoles.forEach(userRole -> {
+            set.add(new Authority(userRole.getRole().getRoleName()));
+        });
+        return set;
+    }
+
 //    Getter and Setter
-
-
     public Set<UserRole> getUsersRoles() {
         return usersRoles;
     }
@@ -128,7 +152,7 @@ public class User {
         this.enabled = enabled;
     }
 
-//    To String 
+    //    To String
     @Override
     public String toString() {
         return "User{" +

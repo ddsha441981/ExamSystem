@@ -25,7 +25,7 @@ public class ExamSystemApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("Starting point");
+        System.out.println("Application Start Point");
 //        User user = new User();
 ////        user.setId(1L);
 //        user.setFirstName("Deendayal");
