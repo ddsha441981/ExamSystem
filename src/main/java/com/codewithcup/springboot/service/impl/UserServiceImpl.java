@@ -1,12 +1,16 @@
 package com.codewithcup.springboot.service.impl;
+import com.codewithcup.springboot.helper.UserFoundException;
+import com.codewithcup.springboot.helper.UserNotFoundException;
 import com.codewithcup.springboot.model.User;
 import com.codewithcup.springboot.model.UserRole;
 import com.codewithcup.springboot.repository.RoleRepository;
 import com.codewithcup.springboot.repository.UserRepository;
 import com.codewithcup.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -24,8 +28,8 @@ public class UserServiceImpl implements UserService {
 
         User local = this.userRepository.findByUsername(user.getUsername());
         if(local != null){
-            System.out.println("User Already there!!!!");
-            throw new Exception("User already present!!!");
+            System.out.println("User is Already there!!!!");
+            throw new UserFoundException();
         }
         else{
             //Create User Here
@@ -44,6 +48,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUser(String username) {
         return this.userRepository.findByUsername(username);
+    }
+
+    @Override
+    public List<User> getAllUsersList() {
+
+        return this.userRepository.findAll();
+
+    }
+
+    @Override
+    public long count() {
+
+        return this.userRepository.count();
     }
 
     //Deleting User using Id

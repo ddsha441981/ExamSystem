@@ -40,9 +40,9 @@ public class AuthenticateController {
 
             authenticate(jwtRequest.getUsername(),jwtRequest.getPassword());
 
-            }catch (BadCredentialsException e){ //UserNotFoundException
+            }catch (UserNotFoundException e){ //UserNotFoundException
             e.printStackTrace();
-            throw new Exception("Bad Credentials Exception!!!!");//User not found!!!
+            throw new UserNotFoundException();//User not found!!!
         }
 
         /////////////////Authenticate User Successfully
@@ -71,6 +71,12 @@ public class AuthenticateController {
     public User getCurrentUser(Principal principal){
 
         return ((User)this.userDetailsServiceImpl.loadUserByUsername(principal.getName()));
+    }
+
+    //User Not Found Exception Handling
+    @ExceptionHandler(UserNotFoundException.class)
+    ResponseEntity<?> exceptionHandler (UserNotFoundException e){
+        return ResponseEntity.ok(e.getMessage());
     }
 
 }

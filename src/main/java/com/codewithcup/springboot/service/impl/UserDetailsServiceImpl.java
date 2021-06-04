@@ -20,9 +20,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         //Data fetch from database
         User user = this.userRepository.findByUsername(username);
-        System.out.println("User is " + user);
+//        System.out.println("User is " + user);
         if(user == null){
-            System.out.println("User not found!!!");
+//            System.out.println("User not found!!!");
             throw new UsernameNotFoundException("No User found credential!!!");
         }
         return user;
