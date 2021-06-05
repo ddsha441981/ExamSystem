@@ -67,7 +67,7 @@ public class UserController {
     public List<User> allUserFromDB(){
 //        return this.userService.getAllUsersList();
             List<User> userlist = userService.getAllUsersList();
-            long count = userService.count();
+//            long count = userService.count();
 
         return userlist;
     }
