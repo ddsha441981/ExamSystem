@@ -16,10 +16,10 @@ import static org.springframework.http.ResponseEntity.ok;
 public class CategoryController {
 
     @Autowired
-    CategoryService categoryService;
+    private CategoryService categoryService;
     //Add Category
     @PostMapping("/")
-    public ResponseEntity<Category> addCategory(@RequestBody(required = false) Category category)throws Exception{
+    public ResponseEntity<Category> addCategory(@RequestBody(required = false) Category category){
         Category category1 = categoryService.addCategory(category);
         return ResponseEntity.ok(category1);
     }

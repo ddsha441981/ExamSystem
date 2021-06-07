@@ -99,6 +99,14 @@ public class Quiz {
         this.category = category;
     }
 
+    public Set<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(Set<Question> questions) {
+        this.questions = questions;
+    }
+
     //    toString Method
     @Override
     public String toString() {
