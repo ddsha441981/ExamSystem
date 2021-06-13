@@ -21,8 +21,7 @@ public class QuizController {
     //add quizzes
     @PostMapping("/")
     public ResponseEntity<Quiz> addQuizess(@RequestBody Quiz quiz){
-        Quiz quiz1 = this.quizService.addQuiz(quiz);
-        return ResponseEntity.ok(quiz1);
+        return ResponseEntity.ok(this.quizService.addQuiz(quiz));
     }
 
     //update Quiz
@@ -35,8 +34,7 @@ public class QuizController {
     //get all Quizzes at time
     @GetMapping("/")
     public ResponseEntity<?> gettingAllQuizzes(){
-        return ResponseEntity.ok( this.quizService.getQuizess());
-
+        return ResponseEntity.ok(this.quizService.getQuizess());
     }
 
     // get quiz using by id

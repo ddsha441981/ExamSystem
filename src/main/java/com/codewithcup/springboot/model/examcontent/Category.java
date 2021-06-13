@@ -11,12 +11,12 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long cId;
+    private Long cid;
     private String title;
-    private String descripton;
+    private String description;
 
 //    One category contains many quizes
-    @OneToMany(mappedBy = "category",fetch =FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Quiz> quizzes = new LinkedHashSet<>();
 
@@ -25,22 +25,22 @@ public class Category {
     }
 
 //    Parameterized Constructor
-
-    public Category(Long cId, String title, String descripton, Set<Quiz> quizzes) {
-        this.cId = cId;
+    public Category(Long cid, String title, String description, Set<Quiz> quizzes) {
+        this.cid = cid;
         this.title = title;
-        this.descripton = descripton;
+        this.description = description;
         this.quizzes = quizzes;
     }
 
     //    Getter Setter
 
-    public Long getcId() {
-        return cId;
+
+    public Long getCid() {
+        return cid;
     }
 
-    public void setcId(Long cId) {
-        this.cId = cId;
+    public void setCid(Long cid) {
+        this.cid = cid;
     }
 
     public String getTitle() {
@@ -51,23 +51,28 @@ public class Category {
         this.title = title;
     }
 
-    public String getDescripton() {
-        return descripton;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescripton(String descripton) {
-        this.descripton = descripton;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    //    toString
+    public Set<Quiz> getQuizzes() {
+        return quizzes;
+    }
+
+    public void setQuizzes(Set<Quiz> quizzes) {
+        this.quizzes = quizzes;
+    }
 
     @Override
     public String toString() {
         return "Category{" +
-                "cId=" + cId +
+                "cid=" + cid +
                 ", title='" + title + '\'' +
-                ", descripton='" + descripton + '\'' +
-                ", quizzes=" + quizzes +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

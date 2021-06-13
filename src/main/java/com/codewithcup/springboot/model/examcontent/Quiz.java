@@ -11,7 +11,7 @@ public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long qId;
+    private long qid;
     private String title;
     private String description;
     private String maxMarks;
@@ -33,8 +33,8 @@ public class Quiz {
     }
 //    Parameterized Constructor
 
-    public Quiz(long qId, String title, String description, String maxMarks, String numberOfQuestions, boolean active) {
-        this.qId = qId;
+    public Quiz(long qid, String title, String description, String maxMarks, String numberOfQuestions, boolean active) {
+        this.qid = qid;
         this.title = title;
         this.description = description;
         this.maxMarks = maxMarks;
@@ -43,12 +43,13 @@ public class Quiz {
     }
 
 //    Getter and setter
-    public long getqId() {
-        return qId;
+
+    public long getQid() {
+        return qid;
     }
 
-    public void setqId(long qId) {
-        this.qId = qId;
+    public void setQid(long qid) {
+        this.qid = qid;
     }
 
     public String getTitle() {
@@ -108,15 +109,19 @@ public class Quiz {
     }
 
     //    toString Method
+
+
     @Override
     public String toString() {
         return "Quiz{" +
-                "qId=" + qId +
+                "qid=" + qid +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", maxMarks='" + maxMarks + '\'' +
                 ", numberOfQuestions='" + numberOfQuestions + '\'' +
                 ", active=" + active +
+                ", category=" + category +
+                ", questions=" + questions +
                 '}';
     }
 }

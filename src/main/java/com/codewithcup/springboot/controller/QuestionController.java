@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.xml.ws.Response;
 import java.util.*;
 
 @RestController
@@ -25,7 +24,6 @@ public class QuestionController {
 //    Add questions
     @PostMapping("/")
     public ResponseEntity<Question> addQuestions(@RequestBody  Question question){
-
         return ResponseEntity.ok(this.questionService.addQuestion(question));
     }
 
@@ -51,7 +49,7 @@ public class QuestionController {
     @GetMapping("/quiz/{qid}")
     public ResponseEntity<?> getQuestionsOfQuiz(@PathVariable("qid") Long qid){
 //        Quiz quiz = new Quiz();
-//        quiz.setqId(qid);
+//        quiz.setqId(quizId);
 //        Set<Question> questionsOfQuiz = this.questionService.getQuestionsOfQuiz(quiz);
 //        return ResponseEntity.ok(questionsOfQuiz);
 

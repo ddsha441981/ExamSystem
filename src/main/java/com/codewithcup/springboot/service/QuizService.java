@@ -9,7 +9,7 @@ public interface QuizService {
     public Quiz addQuiz(Quiz quiz);
     public Quiz updateQuiz(Quiz quiz);
     public Set<Quiz> getQuizess();
-    public Quiz getQuiz(Long quizId);
-    public void deleteQuiz(Long quizId);
+    public Quiz getQuiz(Long qid);
+    public void deleteQuiz(Long qid);
 
 }

@@ -33,6 +33,7 @@ public class CategoryController {
     //get All Categories
     @GetMapping("/")
     public ResponseEntity<?> getAllCategories(){
+
         return ResponseEntity.ok(this.categoryService.getCategories());
     }
 

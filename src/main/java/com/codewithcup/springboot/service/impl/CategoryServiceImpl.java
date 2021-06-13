@@ -39,7 +39,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteCategory(Long categoryId) {
 
         Category category = new Category();
-        category.setcId(categoryId);
+        category.setCid(categoryId);
         this.categoryRepository.delete(category);
     }
 }

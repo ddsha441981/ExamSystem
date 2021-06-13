@@ -110,6 +110,7 @@ public class Question {
     }
 
 //    toString
+
     @Override
     public String toString() {
         return "Question{" +
@@ -121,6 +122,7 @@ public class Question {
                 ", option3='" + option3 + '\'' +
                 ", option4='" + option4 + '\'' +
                 ", answer='" + answer + '\'' +
+                ", quiz=" + quiz +
                 '}';
     }
 }
