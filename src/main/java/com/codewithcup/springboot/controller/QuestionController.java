@@ -60,9 +60,18 @@ public class QuestionController {
            list = list.subList(0,Integer.parseInt(quiz.getNumberOfQuestions()+1));
        }
        Collections.shuffle(list);
-
        return ResponseEntity.ok(list);
     }
+
+    //    Get any questions from any Quiz for admin
+    @GetMapping("/quiz/all/{qid}")
+    public ResponseEntity<?> getQuestionsOfQuizAdmin(@PathVariable("qid") Long qid){
+        Quiz quiz = new Quiz();
+        quiz.setQid(qid);
+        Set<Question> questionsOfQuiz = this.questionService.getQuestionsOfQuiz(quiz);
+        return ResponseEntity.ok(questionsOfQuiz);
+    }
+
 
     //    delete Questions by using questionId
     @DeleteMapping("/{quesId}")

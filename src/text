@@ -1,0 +1,68 @@
+https://adminlte.io/docs/3.0/index.html
+
+{
+    "title": "Python Basic Quiz",
+    "description":"This Quiz contains Python Basics",
+    "maxMarks":"100",
+    "numberOfQuestions":"20",
+    "category":{
+        "cid":"5"
+    }
+
+}
+
+
+
+    {
+        "title": "Programming",
+        "descripton": "This is programming category",
+    },
+
+    {
+        "title": "Web Development",
+        "descripton": "This is Web Development category"
+    },
+
+    {
+        "title": "MathMathematics Practice",
+        "descripton": "This is MathMathematics Practice category"
+    },
+
+    {
+        "title": "General KnowleKnowledge Practice",
+        "descripton": "This is General KnowleKnowledge Practice category"
+    }
+
+
+{
+        "cId": 5,
+        "title": "Programming",
+        "descripton": "This is programming category"
+    },
+    {
+        "cId": 6,
+        "title": "Web Development",
+        "descripton": "This is Web Development category"
+    },
+    {
+        "cId": 8,
+        "title": "MathMathematics Practice",
+        "descripton": "This is MathMathematics Practice category"
+    },
+    {
+        "cId": 9,
+        "title": "General KnowleKnowledge Practice",
+        "descripton": "This is General KnowleKnowledge Practice category"
+    }
+
+
+"content": "Why Java is Plateform Independent?",
+    "image":"1.png",
+    "option1":"In Java JVM Generate Byte Code and convert into machine language",
+    "option2":"Java is Easy language",
+    "option3":"Java is Strong Language",
+    "option4":"None of Above",
+    "answer":"In Java JVM Generate Byte Code and convert into machine language",
+    "Quiz":{
+        "qId":"12"
+    }
