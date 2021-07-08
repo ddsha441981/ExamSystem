@@ -1,13 +1,15 @@
 package com.codewithcup.springboot.controller;
 
+import com.codewithcup.springboot.helper.ActiveQuizNotFoundException;
+import com.codewithcup.springboot.helper.GlobalExceptionController;
+import com.codewithcup.springboot.model.examcontent.Category;
 import com.codewithcup.springboot.model.examcontent.Quiz;
 import com.codewithcup.springboot.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -48,5 +50,43 @@ public class QuizController {
     @DeleteMapping("/{qid}")
     public void deleteQuiz(@PathVariable("qid") Long qid){
         this.quizService.deleteQuiz(qid);
+    }
+
+
+//    Getting spacfic quiz by category
+    @GetMapping("/category/{cid}")
+    public List<Quiz> getSpecficQuizByCategory(@PathVariable("cid") Long cid){
+        Category category = new Category();
+        category.setCid(cid);
+        return this.quizService.getQuizzesByCategory(category);
+    }
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    //Getting quiz only active quiz for user
+    @GetMapping("/active-custom")
+    public ResponseEntity<?> getActiveQuiz(){
+        List<Quiz> activeQuizzes = this.quizService.gettingActiveQuizes();
+//        If all quizzes are InActive
+            if(activeQuizzes.isEmpty()==true){
+                try {
+                    throw new ActiveQuizNotFoundException();
+                } catch (ActiveQuizNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        return ResponseEntity.ok(activeQuizzes);
+
+    }
+
+    @GetMapping("/active")
+    public List<Quiz> getActiveQuizz(){
+        return this.quizService.getActiveQuizzes();
+    }
+
+    @GetMapping("/active/category/{cid}")
+    public List<Quiz> getActiveQuizzOfCategories(@PathVariable("cid") Long cid){
+        Category category = new Category();
+        category.setCid(cid);
+        return this.quizService.getActiveQuizzesOfCategory(category);
     }
 }

@@ -84,9 +84,9 @@ public class UserController {
 //    Update User
 
     //Handle Exception
-    @ExceptionHandler(UserFoundException.class)
-    public ResponseEntity<?> exceptionHandler (UserFoundException ex){
-        return ResponseEntity.ok(ex.getMessage());
-    }
+//    @ExceptionHandler(UserFoundException.class)
+//    public ResponseEntity<?> exceptionHandler (UserFoundException ex){
+//        return ResponseEntity.ok(ex.getMessage());
+//    }
 
 }
