@@ -15,6 +15,8 @@ public class Question {
     private String option3;
     private String option4;
     private String answer;
+    @Transient
+    private String givenAnswer;
 
 //    Many Question contains only one quiz
     @ManyToOne(fetch = FetchType.EAGER)
@@ -25,7 +27,7 @@ public class Question {
     }
 
 //    Parameterized Constructor
-    public Question(long quesId, String content, String image, String option1, String option2, String option3, String option4, String answer) {
+    public Question(long quesId, String content, String image, String option1, String option2, String option3, String option4, String answer, String givenAnswer) {
         this.quesId = quesId;
         this.content = content;
         this.image = image;
@@ -34,6 +36,7 @@ public class Question {
         this.option3 = option3;
         this.option4 = option4;
         this.answer = answer;
+        this.givenAnswer = givenAnswer;
     }
 
 //    Getter and Setter
@@ -109,7 +112,15 @@ public class Question {
         this.quiz = quiz;
     }
 
-//    toString
+    public String getGivenAnswer() {
+        return givenAnswer;
+    }
+
+    public void setGivenAnswer(String givenAnswer) {
+        this.givenAnswer = givenAnswer;
+    }
+
+    //    toString
 
     @Override
     public String toString() {
@@ -122,6 +133,7 @@ public class Question {
                 ", option3='" + option3 + '\'' +
                 ", option4='" + option4 + '\'' +
                 ", answer='" + answer + '\'' +
+                ", answer='" + givenAnswer + '\'' +
                 ", quiz=" + quiz +
                 '}';
     }

@@ -3,9 +3,11 @@ package com.codewithcup.springboot.controller;
 import com.codewithcup.springboot.model.examcontent.Category;
 import com.codewithcup.springboot.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.Set;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -20,14 +22,31 @@ public class CategoryController {
     //Add Category
     @PostMapping("/")
     public ResponseEntity<Category> addCategory(@RequestBody(required = false) Category category){
-        Category category1 = categoryService.addCategory(category);
-        return ResponseEntity.ok(category1);
+        Category categoryObj = null;
+        try{
+            categoryObj = categoryService.addCategory(category);
+            return ResponseEntity.ok().body(categoryObj);
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+
     }
 
     //get Category By Id
     @GetMapping("/{categoryId}")
-    public Category getCategory(@PathVariable("categoryId") Long categoryId){
-        return this.categoryService.getCategory(categoryId);
+    public ResponseEntity<Category> getCategory(@PathVariable("categoryId") Long categoryId){
+        try{
+            Category cateById = this.categoryService.getCategory(categoryId);
+            if(cateById == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+            return ResponseEntity.of(Optional.of(cateById));
+
+        }catch(Exception e){
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     //get All Categories

@@ -12,4 +12,7 @@ public interface QuestionService {
     public Question getQuestion(Long quesId);
     public Set<Question> getQuestionsOfQuiz(Quiz quiz);
     public void deleteQuestion(Long quesId);
+
+//Bussiness Logic
+    public Question getQuestionByID(Long quesId);
 }

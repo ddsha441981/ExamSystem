@@ -8,7 +8,6 @@ import java.util.Set;
 
 @Entity
 public class Quiz {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long qid;
