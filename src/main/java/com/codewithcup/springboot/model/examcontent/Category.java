@@ -1,11 +1,11 @@
 package com.codewithcup.springboot.model.examcontent;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 import java.util.LinkedHashSet;
 import java.util.Set;
-
 @Entity
 @Table(name = "category")
 public class Category {
@@ -13,6 +13,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cid;
     private String title;
+    @Column(length = 5000)
     private String description;
 
 //    One category contains many quizes

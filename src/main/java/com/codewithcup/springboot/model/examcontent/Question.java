@@ -1,5 +1,8 @@
 package com.codewithcup.springboot.model.examcontent;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 
 @Entity
@@ -95,6 +98,7 @@ public class Question {
     public void setOption4(String option4) {
         this.option4 = option4;
     }
+
 
     public String getAnswer() {
         return answer;

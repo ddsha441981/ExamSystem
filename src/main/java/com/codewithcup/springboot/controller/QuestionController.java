@@ -55,10 +55,16 @@ public class QuestionController {
 
         Quiz quiz = this.quizService.getQuiz(qid);
         Set<Question> questions = quiz.getQuestions();
-        List list = new ArrayList(questions);
+        List<Question> list = new ArrayList(questions);
         if (list.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
             list = list.subList(0, Integer.parseInt(quiz.getNumberOfQuestions() + 1));
         }
+
+//        Here answer is blank for user not for admin
+        list.forEach((q)->{
+            q.setAnswer("");
+        });
+
         Collections.shuffle(list);
         return ResponseEntity.ok(list);
     }
@@ -92,6 +98,8 @@ public class QuestionController {
         for (Question q : qList) {
 //            System.out.println(q.getGivenAnswer());
             Question questionByID = this.questionService.getQuestionByID(q.getQuesId());
+            System.out.println("========================> " +questionByID.getAnswer());
+            System.out.println("========================> " +q.getGivenAnswer());
             if (questionByID.getAnswer().equals(q.getGivenAnswer())) {
                 //answer is correct
                 correctAnswers++;

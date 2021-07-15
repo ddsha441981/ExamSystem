@@ -2,21 +2,21 @@ package com.codewithcup.springboot.controller;
 
 import com.codewithcup.springboot.model.examcontent.Category;
 import com.codewithcup.springboot.service.CategoryService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
-import java.util.Set;
 
-import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
 @RequestMapping("/category")
 @CrossOrigin("*")
 public class CategoryController {
-
+    private static final Log logger = LogFactory.getLog(CategoryController.class);
     @Autowired
     private CategoryService categoryService;
     //Add Category
@@ -28,6 +28,7 @@ public class CategoryController {
             return ResponseEntity.ok().body(categoryObj);
         }catch(Exception e){
             e.printStackTrace();
+            logger.error(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
 

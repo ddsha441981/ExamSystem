@@ -23,7 +23,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 //        System.out.println("User is " + user);
         if(user == null){
 //            System.out.println("User not found!!!");
-            throw new UsernameNotFoundException("No User found credential!!!");
+            throw new UsernameNotFoundException("User with this username not found in database!!!");
         }
         return user;
     }

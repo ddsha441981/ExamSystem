@@ -5,6 +5,9 @@ import com.codewithcup.springboot.model.Role;
 import com.codewithcup.springboot.model.User;
 import com.codewithcup.springboot.model.UserRole;
 import com.codewithcup.springboot.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,8 +17,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import java.util.HashSet;
 import java.util.Set;
 
+@Slf4j
 @SpringBootApplication
 public class ExamSystemApplication implements CommandLineRunner {
+    private static final Log logger = LogFactory.getLog(ExamSystemApplication.class);
 
     @Autowired
     private UserService userService;
@@ -26,12 +31,13 @@ public class ExamSystemApplication implements CommandLineRunner {
     public static void main(String[] args) {
 
         SpringApplication.run(ExamSystemApplication.class, args);
+
     }
 
     @Override
     public void run(String... args) throws Exception {
         try {
-            System.out.println("Application Start Point");
+            logger.info("<=================Application Start Point=================>");
 
             User user = new User();
             //        user.setId(1L);
@@ -56,9 +62,10 @@ public class ExamSystemApplication implements CommandLineRunner {
             userRoleSet.add(userRole);
 
             User user1 = this.userService.createUser(user, userRoleSet);
-            user1.toString();
-            System.out.println(user1.getUsername());
+//            user1.toString();
+//            System.out.println(user1.getUsername());
         }catch(UserFoundException e){
+            logger.info("<==================Exception occurred==================> " + e.getMessage());
             e.printStackTrace();
         }
 
