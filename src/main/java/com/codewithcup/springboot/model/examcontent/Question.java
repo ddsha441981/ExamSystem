@@ -4,9 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Question {
+public class Question implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long quesId;

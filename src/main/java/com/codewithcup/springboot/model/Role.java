@@ -1,11 +1,12 @@
 package com.codewithcup.springboot.model;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 @Table(name ="roles")
-public class Role {
+public class Role implements Serializable {
 
     @Id
     private Long roleId;

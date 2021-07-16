@@ -1,6 +1,4 @@
 package com.codewithcup.springboot.service.impl;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
 import com.codewithcup.springboot.model.User;
 import com.codewithcup.springboot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

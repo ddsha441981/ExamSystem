@@ -10,6 +10,10 @@ public interface UserService {
 
 //    Creating User
     public User createUser(User user, Set<UserRole> userRoles) throws Exception;
+
+//    update user
+    public User UpdateUser(User user);
+
 //    Get user by username
     public User getUser(String username);
 

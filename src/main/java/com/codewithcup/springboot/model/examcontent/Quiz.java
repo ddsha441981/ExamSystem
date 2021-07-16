@@ -3,11 +3,12 @@ package com.codewithcup.springboot.model.examcontent;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class Quiz {
+public class Quiz implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long qid;

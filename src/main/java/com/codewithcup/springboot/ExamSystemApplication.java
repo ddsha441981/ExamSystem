@@ -12,11 +12,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.support.SimpleCacheManager;
+import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
+@EnableCaching //For Redis Sever
 @Slf4j
 @SpringBootApplication
 public class ExamSystemApplication implements CommandLineRunner {
@@ -68,7 +75,6 @@ public class ExamSystemApplication implements CommandLineRunner {
             logger.info("<==================Exception occurred==================> " + e.getMessage());
             e.printStackTrace();
         }
-
-
     }
+
 }

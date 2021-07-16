@@ -1,13 +1,12 @@
 package com.codewithcup.springboot.service.impl;
 import com.codewithcup.springboot.helper.UserFoundException;
-import com.codewithcup.springboot.helper.UserNotFoundException;
 import com.codewithcup.springboot.model.User;
 import com.codewithcup.springboot.model.UserRole;
 import com.codewithcup.springboot.repository.RoleRepository;
 import com.codewithcup.springboot.repository.UserRepository;
 import com.codewithcup.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.Set;
 public class UserServiceImpl implements UserService {
 
 //    Repository
-    @Autowired(required = true)
+    @Autowired
     private UserRepository userRepository;
     @Autowired(required = true)
     private RoleRepository roleRepository;
@@ -42,6 +41,12 @@ public class UserServiceImpl implements UserService {
         }
 
         return local;
+    }
+
+//    Update the user
+    @Override
+    public User UpdateUser(User user) {
+        return this.userRepository.save(user);
     }
 
     //Getting User by Username
